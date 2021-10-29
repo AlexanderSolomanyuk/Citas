@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import uuid from 'uuid';
 
 const Formulario = () => {
 
@@ -33,6 +34,9 @@ const Formulario = () => {
             actualizarError(true);
             return;
         }
+
+        // Eliminar el mensaje de error
+        actualizarError(false);
 
         // Asignar Id
 
