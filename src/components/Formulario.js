@@ -1,7 +1,7 @@
 import { React, useState } from "react";
-import uuid from 'uuid';
+import { v1 } from 'uuid';
 
-const Formulario = () => {
+const Formulario = ({crearCita}) => {
 
     // Crear state de citas
     const [cita, actualizarCita] = useState({
@@ -38,11 +38,20 @@ const Formulario = () => {
         // Eliminar el mensaje de error
         actualizarError(false);
 
-        // Asignar Id
-
         // Crear Cita
+        crearCita(cita);
+
+        // Asignar ID
+        cita.id = v1();
 
         // Reiniciar Form
+        actualizarCita({
+            mascota:'',
+            propietario:'',
+            fecha:'',
+            hora:'',
+            sintomas:''
+        });
     }
 
     return (
