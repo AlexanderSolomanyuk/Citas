@@ -17,8 +17,12 @@ function App() {
 
   //Funcion que elimina una cita
   const eliminarCita = id => {
-    console.log(id);
+    const nuevasCitas = citas.filter(cita => cita.id !== id );
+    guardarCitas(nuevasCitas);
   }
+
+  // Mensaje condicional
+  console.log(citas.length);
 
   return (
     <>
@@ -31,7 +35,8 @@ function App() {
             />
           </div>
           <div className="one-half column">
-            <h2>Administra tus citas</h2>
+            { citas.length <= 0 ? <h2>No hay citas</h2> : <h2>Administra tus citas</h2> }
+            
             {citas.map(cita => (
               <Cita
                 key={cita.id}
